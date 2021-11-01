@@ -18,17 +18,12 @@ module.exports = () => {
   return {
     mode,
     devtool,
-    entry: './src/App.jsx',
+    entry: './src/index.tsx',
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js|jsx|ts|tsx)$/,
           use: 'babel-loader',
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.(ts|tsx)$/,
-          use: ['babel-loader', 'ts-loader'],
           exclude: /node_modules/,
         },
         {
@@ -41,11 +36,16 @@ module.exports = () => {
       path: path.join(__dirname, 'dist'),
       filename: 'app.js',
     },
+    resolve: {
+      modules: ['node_modules'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
     plugins,
     devServer: {
       host: 'localhost',
       historyApiFallback: true,
       port: 8080,
+      hot: true,
     },
   };
 };

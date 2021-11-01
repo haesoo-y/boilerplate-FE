@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "strict": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
