@@ -7,13 +7,13 @@ module.exports = () => {
   const prod = process.env.NODE_ENV === 'production';
   const mode = prod ? 'production' : 'development';
   const devtool = prod ? 'hidden-source-map' : 'eval';
-  const cssLoader = [];
+  const cssLoader = ['css-loader'];
   const plugins = [new HtmlWebpackPlugin({ template: './src/index.html' }), new Dotenv()];
   if (prod) {
-    cssLoader.push(MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader');
+    cssLoader.unshift(MiniCssExtractPlugin.loader);
     plugins.push(new MiniCssExtractPlugin());
   } else {
-    cssLoader.push('style-loader', 'css-loader', 'sass-loader');
+    cssLoader.unshift('style-loader');
   }
   return {
     mode,
